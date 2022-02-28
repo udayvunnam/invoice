@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	import logo from './TeamCoda_Logo.svg';
 </script>
 
 <header>

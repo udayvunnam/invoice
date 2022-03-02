@@ -3,6 +3,12 @@
 	import cn from '$lib/util/classnames';
 
 	let isMenuOpen = false;
+
+	const menuItems = [
+		{ label: 'Dashboard', href: '/' },
+		{ label: 'Create Invoice', href: '/invoice' },
+		{ label: 'My Invoices', href: '/invoices' }
+	];
 </script>
 
 <nav class="bg-white border-b border-gray-200">
@@ -14,33 +20,21 @@
 				</div>
 
 				<div class="hidden sm:-my-px sm:ml-20 sm:flex sm:space-x-8">
-					<a
-						sveltekit:prefetch
-						href="/"
-						class={cn(
-							'border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
-							$page.url.pathname === '/'
-								? 'border-pink-500 text-gray-900'
-								: 'text-gray-500 hover:border-gray-300 hover:text-gray-700'
-						)}
-						aria-current={$page.url.pathname === '/' ? 'page' : false}
-					>
-						Create Invoice
-					</a>
-
-					<a
-						sveltekit:prefetch
-						href="/invoices"
-						class={cn(
-							'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
-							$page.url.pathname === '/invoices'
-								? 'border-pink-500 text-gray-900'
-								: 'text-gray-500 hover:border-gray-300 hover:text-gray-700'
-						)}
-						aria-current={$page.url.pathname === '/invoices' ? 'page' : false}
-					>
-						My Invoices
-					</a>
+					{#each menuItems as { href, label }}
+						<a
+							sveltekit:prefetch
+							{href}
+							class={cn(
+								'border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
+								$page.url.pathname === href
+									? 'border-pink-500 text-gray-900'
+									: 'text-gray-500 hover:border-gray-300 hover:text-gray-700'
+							)}
+							aria-current={$page.url.pathname === href ? 'page' : false}
+						>
+							{label}
+						</a>
+					{/each}
 				</div>
 			</div>
 
@@ -58,8 +52,6 @@
 					<span class="sr-only">Open main menu</span>
 					<!--
               Heroicon name: outline/menu
-
-              Menu open: "hidden", Menu closed: "block"
             -->
 					<svg
 						class={cn('h-6 w-6', isMenuOpen ? 'hidden' : 'block')}
@@ -78,8 +70,6 @@
 					</svg>
 					<!--
               Heroicon name: outline/x
-
-              Menu open: "block", Menu closed: "hidden"
             -->
 					<svg
 						class={cn('h-6 w-6', isMenuOpen ? 'block' : 'hidden')}
@@ -104,33 +94,21 @@
 	{#if isMenuOpen}
 		<div class="sm:hidden" id="mobile-menu">
 			<div class="pt-2 pb-3 space-y-1">
-				<a
-					sveltekit:prefetch
-					href="/"
-					class={cn(
-						'border-transparent  block pl-3 pr-4 py-2 border-l-4 text-base font-medium',
-						$page.url.pathname === '/'
-							? 'bg-pink-50 border-pink-500 text-pink-700'
-							: 'text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-					)}
-					aria-current={$page.url.pathname === '/' ? 'page' : false}
-				>
-					Create Invoice
-				</a>
-
-				<a
-					sveltekit:prefetch
-					href="/invoices"
-					class={cn(
-						'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium',
-						$page.url.pathname === '/invoices'
-							? 'bg-pink-50 border-pink-500 text-pink-700'
-							: 'text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-					)}
-					aria-current={$page.url.pathname === '/invoices' ? 'page' : false}
-				>
-					My Invoices
-				</a>
+				{#each menuItems as { href, label }}
+					<a
+						sveltekit:prefetch
+						{href}
+						class={cn(
+							'border-transparent block pl-3 pr-4 py-2 border-l-4 text-base font-medium',
+							$page.url.pathname === href
+								? 'bg-pink-50 border-pink-500 text-pink-700'
+								: 'text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
+						)}
+						aria-current={$page.url.pathname === href ? 'page' : false}
+					>
+						{label}
+					</a>
+				{/each}
 			</div>
 		</div>
 	{/if}

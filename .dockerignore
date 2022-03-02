@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+node_modules
+build
+.svelte-kit
+.git
+README.md
+LICENSE
+.vscode
+npm-debug.log
+coverage
+.env
+.editorconfig

@@ -11,12 +11,12 @@
 	];
 </script>
 
-<nav class="bg-white border-b border-gray-200">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex justify-between h-16">
+<nav class="border-b border-gray-200 bg-white">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex h-16 justify-between">
 			<div class="flex">
-				<div class="flex-shrink-0 flex items-center">
-					<img class="block h-8 w-auto" src="../../../static/TeamCoda_Logo.svg" alt="Invoice" />
+				<div class="flex flex-shrink-0 items-center">
+					<img class="block h-8 w-auto" src="TeamCoda_Logo.svg" alt="Invoice" />
 				</div>
 
 				<div class="hidden sm:-my-px sm:ml-20 sm:flex sm:space-x-8">
@@ -42,7 +42,7 @@
 				<!-- Mobile menu button -->
 				<button
 					type="button"
-					class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+					class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
 					aria-controls="mobile-menu"
 					aria-expanded="false"
 					on:click={() => {
@@ -93,7 +93,7 @@
 
 	{#if isMenuOpen}
 		<div class="sm:hidden" id="mobile-menu">
-			<div class="pt-2 pb-3 space-y-1">
+			<div class="space-y-1 pt-2 pb-3">
 				{#each menuItems as { href, label }}
 					<a
 						sveltekit:prefetch
